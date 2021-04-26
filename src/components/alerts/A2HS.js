@@ -37,6 +37,7 @@ const A2HS = () => {
     } else {
       onWebDecline();
     }
+    setConfirm(false);
   };
 
   if (!(iosPrompt || iosInstallPrompt || webInstallPrompt)) return null;
