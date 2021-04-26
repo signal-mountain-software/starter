@@ -42,8 +42,9 @@ const withAuth = Component => props => {
         setAuthenticatedStable(false);
         setUserStable(null);
 
+        const authUrl = process.env.THESEUS_URL || 'https://theseus.smsoftware.io';
         const redirectUrl = window.location.origin;
-        window.open(`${process.env.THESEUS_URL}?redirectUrl=${encodeURIComponent(redirectUrl)}`, '_self');
+        window.open(`${authUrl}?redirectUrl=${encodeURIComponent(redirectUrl)}`, '_self');
       });
 
     return () => {
