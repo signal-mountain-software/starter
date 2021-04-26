@@ -18,7 +18,7 @@ const Alert = ({ children, show }) => (
         <div className='absolute -top-6 inset-x-0 flex justify-center'>
           <StaticImage
             src='../../images/smsoftware-icon.png'
-            alt='SMSoftware Logo'
+            alt='Signal Mountain Software'
             placeholder='blurred'
             quality={100}
             formats={['AUTO', 'PNG']}
