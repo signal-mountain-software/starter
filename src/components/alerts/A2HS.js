@@ -16,7 +16,7 @@ const A2HS = () => {
   const [webInstallPrompt, onWebDecline, onWebInstall] = useWebPrompt();
   const buttonClasses = clsx(
     'text-sm font-medium rounded-md',
-    'focus:ring-smsoftware-blue focus:ring-offset-smsoftware-blue-50 focus:outline-none focus:ring-offset-2 focus:ring-2'
+    'focus:outline-none focus:ring-smsoftware-blue focus:ring-offset-smsoftware-blue-50 focus:ring-offset-2 focus:ring-2'
   );
 
   const onDismiss = () => {
@@ -46,13 +46,13 @@ const A2HS = () => {
     <Alert show={!!(iosPrompt || iosInstallPrompt || webInstallPrompt)}>
       <div className='flex pt-8 sm:pt-6'>
         <div className='flex-shrink-0'>
-          <InformationCircleIcon className='text-smsoftware-blue-400 w-5 h-5' />
+          <InformationCircleIcon className='w-5 h-5 text-smsoftware-blue-400' />
         </div>
 
         <div className='flex-1 ml-3'>
           <h3 className='text-smsoftware-blue text-sm font-medium'>Install Available</h3>
           {(iosPrompt || iosInstallPrompt) && (
-            <div className='text-smsoftware-blue mt-4 text-sm sm:mt-6'>
+            <div className='mt-4 text-smsoftware-blue text-sm sm:mt-6'>
               <p className='block sm:hidden'>For iOS:</p>
               <div className='flex flex-1 items-center mt-2 space-x-1 sm:mt-0'>
                 <div>
@@ -70,12 +70,12 @@ const A2HS = () => {
                 <>
                   <h3 className='text-smsoftware-blue text-sm font-medium'>Are you sure?</h3>
                   <button
-                    className={clsx('text-smsoftware-blue px-2 py-1.5 hover:bg-blue-50 bg-white', buttonClasses)}
+                    className={clsx('px-2 py-1.5 text-smsoftware-blue hover:bg-blue-50 bg-white', buttonClasses)}
                     onClick={onConfirmDismiss}>
                     Yes
                   </button>
                   <button
-                    className={clsx('text-smsoftware-blue px-2 py-1.5 hover:bg-blue-50 bg-white', buttonClasses)}
+                    className={clsx('px-2 py-1.5 text-smsoftware-blue hover:bg-blue-50 bg-white', buttonClasses)}
                     onClick={onCancelDismiss}>
                     No
                   </button>
@@ -89,7 +89,7 @@ const A2HS = () => {
                   </button>
                   {webInstallPrompt && (
                     <button
-                      className={clsx('text-smsoftware-blue px-2 py-1.5 hover:bg-blue-50 bg-white', buttonClasses)}
+                      className={clsx('px-2 py-1.5 text-smsoftware-blue hover:bg-blue-50 bg-white', buttonClasses)}
                       onClick={onWebInstall}>
                       Install
                     </button>

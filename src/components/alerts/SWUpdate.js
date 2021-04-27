@@ -7,7 +7,7 @@ const SWUpdate = () => {
   const [updateAvailable, setUpdateAvailable] = React.useState(false);
   const buttonClasses = clsx(
     'text-sm font-medium rounded-md',
-    'focus:ring-smsoftware-blue focus:ring-offset-smsoftware-blue-50 focus:outline-none focus:ring-offset-2 focus:ring-2'
+    'focus:outline-none focus:ring-smsoftware-blue focus:ring-offset-smsoftware-blue-50 focus:ring-offset-2 focus:ring-2'
   );
 
   const onReload = () => {
@@ -30,7 +30,7 @@ const SWUpdate = () => {
     <Alert show={updateAvailable}>
       <div className='flex pt-10'>
         <div className='flex-shrink-0'>
-          <InformationCircleIcon className='text-smsoftware-blue-400 w-5 h-5' />
+          <InformationCircleIcon className='w-5 h-5 text-smsoftware-blue-400' />
         </div>
         <div className='flex-1 ml-3 md:flex md:justify-between'>
           <p className='text-smsoftware-blue text-sm'>A new update is available. Reload to see changes.</p>
