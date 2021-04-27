@@ -1,10 +1,11 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import { Dialog, Menu, Transition } from '@headlessui/react';
-import { BellIcon, MenuAlt2Icon, UserCircleIcon, XIcon } from '@heroicons/react/outline';
+import { Dialog, Transition } from '@headlessui/react';
+import { BellIcon, MenuAlt2Icon, XIcon } from '@heroicons/react/outline';
 
 import SidebarLinks from './SidebarLinks';
+import UserMenu from './UserMenu';
 import { navbarHeight } from './layout.module.css';
 
 const Sidebar = ({ children, title }) => {
@@ -42,7 +43,7 @@ const Sidebar = ({ children, title }) => {
             leave='transition ease-in-out duration-300 transform'
             leaveFrom='translate-x-0'
             leaveTo='-translate-x-full'>
-            <div className='from-smsoftware-blue to-smsoftware-blue-700 relative flex flex-1 flex-col pb-4 pt-5 w-full max-w-xs bg-gradient-to-b'>
+            <div className='relative flex flex-1 flex-col pb-4 pt-5 w-full max-w-xs bg-gradient-to-b from-smsoftware-blue to-smsoftware-blue-700'>
               <Transition.Child
                 as={React.Fragment}
                 enter='ease-in-out duration-300'
@@ -57,12 +58,12 @@ const Sidebar = ({ children, title }) => {
                     type='button'
                     onClick={closeMenu}>
                     <span className='sr-only'>Close sidebar</span>
-                    <XIcon className='w-6 h-6 text-white' aria-hidden='true' />
+                    <XIcon className='w-8 h-8 text-white sm:w-6 sm:h-6' aria-hidden='true' />
                   </button>
                 </div>
               </Transition.Child>
 
-              <SidebarLinks title={title} closeMenu={closeMenu} />
+              <SidebarLinks title={title} />
             </div>
           </Transition.Child>
 
@@ -73,10 +74,10 @@ const Sidebar = ({ children, title }) => {
       </Transition.Root>
 
       {/* static sidebar for desktop clients */}
-      <div className='from-smsoftware-blue to-smsoftware-blue-700 hidden bg-gradient-to-b md:flex md:flex-shrink-0'>
+      <div className='hidden bg-gradient-to-b from-smsoftware-blue to-smsoftware-blue-700 md:flex md:flex-shrink-0'>
         <div className='flex flex-col w-64'>
           <div className='flex flex-col flex-grow pb-4 pt-5 overflow-y-auto'>
-            <SidebarLinks title={title} closeMenu={closeMenu} />
+            <SidebarLinks title={title} />
           </div>
         </div>
       </div>
@@ -85,7 +86,7 @@ const Sidebar = ({ children, title }) => {
       <div className='flex flex-1 flex-col w-0 overflow-hidden'>
         <div className={clsx('relative z-10 flex flex-shrink-0 bg-white shadow', navbarHeight)}>
           <button
-            className='focus:ring-smsoftware-blue px-4 text-gray-500 border-r border-gray-200 focus:outline-none focus:ring-2 focus:ring-inset md:hidden'
+            className='px-4 text-gray-500 border-r border-gray-200 focus:outline-none focus:ring-smsoftware-blue focus:ring-2 focus:ring-inset md:hidden'
             type='button'
             onClick={openMenu}>
             <span className='sr-only'>Open sidebar</span>
@@ -99,73 +100,13 @@ const Sidebar = ({ children, title }) => {
 
             <div className='flex items-center ml-4 md:ml-6'>
               <button
-                className='focus:ring-smsoftware-blue p-1 text-gray-400 hover:text-gray-500 bg-white rounded-full focus:outline-none focus:ring-offset-2 focus:ring-2'
+                className='p-1 text-gray-400 hover:text-gray-500 bg-white rounded-full focus:outline-none focus:ring-smsoftware-blue focus:ring-offset-2 focus:ring-2'
                 type='button'>
                 <span className='sr-only'>View notifications</span>
                 <BellIcon className='w-8 h-8 sm:w-6 sm:h-6' aria-hidden='true' />
               </button>
 
-              {/* profile dropdown */}
-              <Menu as='div' className='relative ml-3'>
-                {({ open }) => (
-                  <>
-                    <div>
-                      <Menu.Button className='focus:ring-smsoftware-blue flex items-center text-gray-400 hover:text-gray-500 bg-white rounded-full focus:outline-none focus:ring-offset-2 focus:ring-2'>
-                        <span className='sr-only'>Open user menu</span>
-                        <UserCircleIcon className='w-10 h-10 sm:w-8 sm:h-8' />
-                      </Menu.Button>
-                    </div>
-
-                    <Transition
-                      as={React.Fragment}
-                      show={open}
-                      enter='transition ease-out duration-100'
-                      enterFrom='transform opacity-0 scale-95'
-                      enterTo='transform opacity-100 scale-100'
-                      leave='transition ease-in duration-75'
-                      leaveFrom='transform opacity-100 scale-100'
-                      leaveTo='transform opacity-0 scale-95'>
-                      <Menu.Items
-                        className='absolute right-0 mt-2 py-1 w-48 bg-white rounded-md focus:outline-none shadow-lg origin-top-right ring-black ring-opacity-5 ring-1'
-                        static>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href='/'
-                              className={clsx('block px-4 py-2 text-gray-700 text-sm', {
-                                'bg-gray-100': active,
-                              })}>
-                              Your Profile
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href='/'
-                              className={clsx('block px-4 py-2 text-gray-700 text-sm', {
-                                'bg-gray-100': active,
-                              })}>
-                              Settings
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href='/'
-                              className={clsx('block px-4 py-2 text-gray-700 text-sm', {
-                                'bg-gray-100': active,
-                              })}>
-                              Sign Out
-                            </a>
-                          )}
-                        </Menu.Item>
-                      </Menu.Items>
-                    </Transition>
-                  </>
-                )}
-              </Menu>
+              <UserMenu />
             </div>
           </div>
         </div>

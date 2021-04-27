@@ -3,7 +3,7 @@
 }
 
 .menu-link-selected {
-  @apply bg-smsoftware-blue-800 text-white;
+  @apply text-white bg-smsoftware-blue-800;
 }
 
 .navbar-height {
