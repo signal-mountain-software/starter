@@ -43,7 +43,7 @@ const Sidebar = ({ children, title }) => {
             leave='transition ease-in-out duration-300 transform'
             leaveFrom='translate-x-0'
             leaveTo='-translate-x-full'>
-            <div className='relative flex flex-1 flex-col pb-4 pt-5 w-full max-w-xs bg-gradient-to-b from-smsoftware-blue to-smsoftware-blue-700'>
+            <div className='relative flex flex-1 flex-col pb-4 w-full max-w-xs bg-gradient-to-b from-smsoftware-blue to-smsoftware-blue-700'>
               <Transition.Child
                 as={React.Fragment}
                 enter='ease-in-out duration-300'
@@ -76,7 +76,7 @@ const Sidebar = ({ children, title }) => {
       {/* static sidebar for desktop clients */}
       <div className='hidden bg-gradient-to-b from-smsoftware-blue to-smsoftware-blue-700 md:flex md:flex-shrink-0'>
         <div className='flex flex-col w-64'>
-          <div className='flex flex-col flex-grow pb-4 pt-5 overflow-y-auto'>
+          <div className='flex flex-col flex-grow pb-4 overflow-y-auto'>
             <SidebarLinks title={title} />
           </div>
         </div>
