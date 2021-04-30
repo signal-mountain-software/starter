@@ -13,6 +13,12 @@ Amplify.configure({
     userPoolId: process.env.COGNITO_USER_POOL_ID,
     userPoolWebClientId: process.env.COGNITO_USER_POOL_WEB_CLIENT_ID,
   },
+  cookieStorage: {
+    domain: process.env.NODE_ENV === 'development' ? 'localhost' : '.smsoftware.io',
+    path: '/',
+    expires: 1,
+    secure: process.env.COGNITO_SECURE_COOKIE === 'on',
+  },
   ssr: true,
 });
 
